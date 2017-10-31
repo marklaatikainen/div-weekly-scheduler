@@ -65,7 +65,7 @@ function createEvents(data) {
 			ev.innerHTML = cont;
 			ev.style.top =  getPosition(data[d].Time[s].substring(5, 10)) + "px";
 			ev.style.left = getDay(data[d].Time[s].substring(1,4)) + "px";
-            ev.style.height = data[d].Time[s].substring(11, 16) + "%";
+            ev.style.height = getDuration(data[d].Time[s].substring(5, 10), data[d].Time[s].substring(11, 16)) + "px";
 		}
 	}
 	doc.appendChild(ev);
@@ -92,22 +92,23 @@ function getPosition(startTime) {
 
 function getDay(day) {
 	if (day == "Mon") {
-		return 340;
+		return 320;
 	} else if (day == "Tue") {
-		return 440;
+		return 420;
 	} else if (day == "Wed") {
-		return 540;
+		return 520;
 	} else if (day == "Thu") {
-		return 640;
+		return 620;
 	} else if (day == "Fri") {
-		return 740;
+		return 720;
 	} else {
 		return;
 	}
 }
 
 function getDuration(startTime, endTime) {
-    // start time
+    var h = 34;
+	// start time
     var sDate = new Date();
     var s = startTime.split(':');
     sDate.setHours(s[0]);
@@ -124,8 +125,5 @@ function getDuration(startTime, endTime) {
     var diff_mins = difference.getMinutes();
 
     var duration = diff_hours;
-    if (e[1] == "45" || e[1] == "40") {
-        duration -= 1;
-    }
-    return duration;
+    return duration * h;
 }
