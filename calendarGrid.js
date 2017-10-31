@@ -71,8 +71,23 @@ function createEvents(data) {
 	doc.appendChild(ev);
 }
 
-function getPosition() {
-	
+function getPosition(startTime) {
+	var jsonTime = ["08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00"];
+	var tableTime = ["5","68","2","3","4","5","6","7","8","9","10","11","12"];
+
+    for (var i = 0; i < jsonTime.length; i++) {
+        var s = startTime.split(':');
+        if (s[1] > 00 && s[i] < 30) {
+            startTime = s[0] + ":" + "00";
+        } else if (s[1] >= 30 && s[i] <= 59) {
+            startTime = (s[0] + 1) + ":" + "00";
+        }
+		if(startTime == jsonTime[i]) {
+			var result = tableTime[i];
+			return result;
+		}
+	}
+	return;
 }
 
 function getDay(day) {
