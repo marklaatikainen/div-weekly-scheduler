@@ -1,17 +1,10 @@
 #calendar {
-	position: relative;
 	top: 60px;
 	margin-left: auto;
 	margin-right: auto;
 	width: 850px;
 	padding: 0;
-	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
-}
-
-#calendar:after {
-    content: "";
-    display: table;
-    clear: both;
+	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
 }
 
 .cell, .day, .time {
@@ -23,32 +16,73 @@
     display: inline-block;
     float: left;
     box-sizing: border-box;
-	border: 1px solid #ccc;
 }
 
 .column {
-    width: calc(100% / 6);
+    width: calc(100% / 5);
     display: inline-block;
-    float: left;
+}
+
+.column--time {
+    width: calc(100% / 6);
 }
 
 .cell, .time {
-    width: 100%;
+	width: 100%;
+	padding: .5em 1em;
+	border-right: 1px solid #B3BFAA;
+	border-bottom: 1px solid #B3BFAA;
 }
 
 .day { 
-	background: #D5E0CC;
 	width: calc(100% / 6);
+	background: #D5E0CC;
+	padding-top: 6px;
+	border-right: 1px solid #B3BFAA;
+	border-bottom: 1px solid #B3BFAA;
+}
+
+.canvas {
+	position: relative;
+	display: inline-block;
+    width: calc(100% - (100% / 6));
 }
 
 .event {
 	position: absolute;
 	text-align: center;
-	width: 100px;
+	font-size: 12px;
+	width: 127px;
 	margin: 0;
-	padding: 0;
-	border: 1px solid black;
 	display: inline-block;
-	background-color: #efe;	
+	background-color: rgba(10, 100, 100, 0.9);	
 	z-index: 2;
+	left: attr(data-day);
+	top: attr(data-start);
+	height: attr(data-dur);
+	color:#fff;
+	border: 1px solid #C1DAD7;
+}
+
+.strDiv {
+	position: absolute;
+	top: 40px;
+	left: 5%;
+	text-align: center;
+	vertical-align: middle;
+	padding-bottom: 40px;
+	font-size: 12px;
+	width: 90%;
+	margin: 0;
+	display: inline-block;
+	background-color: rgba(10, 100, 100, 0.9);	
+	z-index: 2;
+	color: #fff;
+	border: 1px solid #C1DAD7;
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
 }
